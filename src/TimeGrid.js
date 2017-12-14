@@ -237,6 +237,35 @@ export default class TimeGrid extends Component {
     if (isOverflowing)
       style[rtl ? 'marginLeft' : 'marginRight'] = scrollbarSize() + 'px';
 
+    // TODO make `showDateContentRow` a Calendar's property
+    const showDateContentRow = false;
+
+    let dateContentRow = null;
+    if (showDateContentRow) {
+      dateContentRow = (<DateContentRow
+            now={now}
+            minRows={2}
+            range={range}
+            rtl={this.props.rtl}
+            events={events}
+            className='rbc-allday-cell'
+            selectable={selectable}
+            onSelectSlot={this.handleSelectAllDaySlot}
+            dateCellWrapper={components.dateCellWrapper}
+            eventComponent={this.props.components.event}
+            eventWrapperComponent={this.props.components.eventWrapper}
+            titleAccessor={this.props.titleAccessor}
+            startAccessor={this.props.startAccessor}
+            endAccessor={this.props.endAccessor}
+            allDayAccessor={this.props.allDayAccessor}
+            eventPropGetter={this.props.eventPropGetter}
+            selected={this.props.selected}
+            onSelect={this.handleSelectEvent}
+            onDoubleClick={this.handleDoubleClickEvent}
+            longPressThreshold={this.props.longPressThreshold}
+          />)
+    }
+
     return (
       <div
         ref='headerCell'
@@ -261,28 +290,7 @@ export default class TimeGrid extends Component {
           >
             { message(messages).allDay }
           </div>
-          <DateContentRow
-            now={now}
-            minRows={2}
-            range={range}
-            rtl={this.props.rtl}
-            events={events}
-            className='rbc-allday-cell'
-            selectable={selectable}
-            onSelectSlot={this.handleSelectAllDaySlot}
-            dateCellWrapper={components.dateCellWrapper}
-            eventComponent={this.props.components.event}
-            eventWrapperComponent={this.props.components.eventWrapper}
-            titleAccessor={this.props.titleAccessor}
-            startAccessor={this.props.startAccessor}
-            endAccessor={this.props.endAccessor}
-            allDayAccessor={this.props.allDayAccessor}
-            eventPropGetter={this.props.eventPropGetter}
-            selected={this.props.selected}
-            onSelect={this.handleSelectEvent}
-            onDoubleClick={this.handleDoubleClickEvent}
-            longPressThreshold={this.props.longPressThreshold}
-          />
+          {dateContentRow}
         </div>
       </div>
     )
