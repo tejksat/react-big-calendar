@@ -114,7 +114,8 @@ class DayColumn extends React.Component {
         {...props}
         className={cn(
           'rbc-day-slot',
-          dates.isToday(max) && 'rbc-today'
+          dates.isToday(max) && 'rbc-today',
+          dates.isPastDay(max) && 'rbc-past-day'
         )}
         now={now}
         min={min}

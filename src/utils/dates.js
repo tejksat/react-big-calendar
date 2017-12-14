@@ -86,6 +86,10 @@ let dates = {
     return dates.eq(date, dates.today(), 'day')
   },
 
+  isPastDay(date) {
+    return dates.lt(date, dates.today(), 'day')
+  },
+
   eqTime(dateA, dateB){
     return dates.hours(dateA) === dates.hours(dateB)
       && dates.minutes(dateA) === dates.minutes(dateB)
