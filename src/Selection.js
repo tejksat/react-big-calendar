@@ -244,7 +244,9 @@ class Selection {
       return this.emit('reset')
     }
 
-    if(click && inRoot) {
+    // TODO make `handleClicks` a Calendar's property
+    const handleClicks = false;
+    if(click && inRoot && handleClicks) {
       return this._handleClickEvent(e);
     }
 
