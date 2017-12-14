@@ -268,6 +268,11 @@ class Calendar extends React.Component {
     step: PropTypes.number,
 
     /**
+     * Determines the selectable time offset fraction in week and day views
+     */
+    sliceLength: PropTypes.number,
+
+    /**
      * The number of slots per "section" in the time grid views. Adjust with `step`
      * to change the default of 1 hour long groups, with 30 minute slots.
      */

@@ -29,6 +29,7 @@ class DayColumn extends React.Component {
   static propTypes = {
     events: PropTypes.array.isRequired,
     step: PropTypes.number.isRequired,
+    sliceLength: PropTypes.number,
     min: PropTypes.instanceOf(Date).isRequired,
     max: PropTypes.instanceOf(Date).isRequired,
     now: PropTypes.instanceOf(Date),
@@ -94,6 +95,7 @@ class DayColumn extends React.Component {
       min,
       max,
       step,
+      sliceLength,
       now,
       selectRangeFormat,
       culture,
@@ -121,6 +123,7 @@ class DayColumn extends React.Component {
         min={min}
         max={max}
         step={step}
+        sliceLength={sliceLength}
       >
         {this.renderEvents()}
 

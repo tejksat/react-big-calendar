@@ -10,6 +10,7 @@ import TimeSlotGroup from './TimeSlotGroup'
 export default class TimeColumn extends Component {
   static propTypes = {
     step: PropTypes.number.isRequired,
+    sliceLength: PropTypes.number,
     culture: PropTypes.string,
     timeslots: PropTypes.number.isRequired,
     now: PropTypes.instanceOf(Date).isRequired,
@@ -33,7 +34,7 @@ export default class TimeColumn extends Component {
   }
 
   renderTimeSliceGroup(key, isNow, date) {
-    const { dayWrapperComponent, timeslots, showLabels, step, slotPropGetter, timeGutterFormat, culture } = this.props;
+    const { dayWrapperComponent, timeslots, showLabels, step, sliceLength, slotPropGetter, timeGutterFormat, culture } = this.props;
 
     return (
       <TimeSlotGroup
@@ -41,6 +42,7 @@ export default class TimeColumn extends Component {
         isNow={isNow}
         value={date}
         step={step}
+        sliceLength={sliceLength}
         slotPropGetter={slotPropGetter}
         culture={culture}
         timeslots={timeslots}

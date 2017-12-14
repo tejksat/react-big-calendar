@@ -10,6 +10,7 @@ export default class TimeSlotGroup extends Component {
     dayWrapperComponent: elementType,
     timeslots: PropTypes.number.isRequired,
     step: PropTypes.number.isRequired,
+    sliceLength: PropTypes.number,
     value: PropTypes.instanceOf(Date).isRequired,
     showLabels: PropTypes.bool,
     isNow: PropTypes.bool,
@@ -42,7 +43,7 @@ export default class TimeSlotGroup extends Component {
 
   renderSlices() {
     const ret = []
-    const sliceLength = this.props.step
+    const sliceLength = this.props.sliceLength || this.props.step
     let sliceValue = this.props.value
     for (let i = 0; i < this.props.timeslots; i++) {
       const content = localizer.format(sliceValue, this.props.timeGutterFormat, this.props.culture)

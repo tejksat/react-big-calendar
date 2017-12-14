@@ -28,6 +28,7 @@ export default class TimeGrid extends Component {
     events: PropTypes.array.isRequired,
 
     step: PropTypes.number,
+    sliceLength: PropTypes.number,
     range: PropTypes.arrayOf(
       PropTypes.instanceOf(Date)
     ),
